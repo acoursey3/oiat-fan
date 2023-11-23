@@ -30,7 +30,7 @@ services:
     # This file should contain the password:
     # MYSQL_ROOT_PASSWORD=[password]
     env_file:
-      - secrets.env
+      - .env
     environment:
       MYSQL_DATABASE: datababe # name of database
     ports:
