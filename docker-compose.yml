@@ -1,16 +1,46 @@
 version: '3'
 services:
-  web:
-    build: frontend
+  # React
+  frontend:
+    build: ./frontend
     ports:
-      - "8080:8080"
+      - "3000:3000" # default port
+    depends_on:
+      - mysql-db
 
+  # Python Flask
   backend:
-    build: backend
+    build: ./backend
     ports:
-      - "5000:5000"
-    #depends_on:
-    #  - db
+      - "5000:5000" # default port
+    depends_on:
+      - mysql-db
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
+
+  # MySQL Database
+  mysql-db:
+    # Using the latest version
+    # Check here in future for updated versions of the image
+    # https://hub.docker.com/_/mysql
+    image: mysql:8.2
+    # Configuration for the MySQL DB Password
+    # This file should be stored on the server, not in the root of the web
+    # This file should contain the password:
+    # MYSQL_ROOT_PASSWORD=[password]
+    env_file:
+      - secrets.env
+    environment:
+      MYSQL_DATABASE: datababe # name of database
+    ports:
+      - "3306:3306" # default port
+
+    # Where persistent data should be stored on the server
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+# Specifies the persistent data that needs to be loaded
+# In our case, it's just the MySQL database
+volumes:
+  mysql-data:
