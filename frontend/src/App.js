@@ -1,40 +1,37 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [backendMessage, setBackendMessage] = useState('');
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/hello');
-      const data = await response.json();
-      setBackendMessage(data.message);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  async function add_user() {
+    const user_data = {'username': null, 'email': null};
 
-  const postData = async () => {
+    user_data['username'] = document.getElementById('username').value;
+    user_data['email'] = document.getElementById('email').value;
+
     try {
-      const response = await fetch('http://localhost:5000/api/hello', {
+      const response = await fetch('http://localhost:5000/api/add_user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: 'nico' }),
+        body: JSON.stringify(user_data),
       });
+
       const data = await response.json();
-      setBackendMessage(data.message);
+      setBackendMessage("User added successfully");
     } catch (error) {
-      console.error('Error posting data:', error);
+      setBackendMessage("Ya boi done goofed");
     }
-  };
+  }
 
   return (
     <div>
       <h1>Frontend</h1>
-      <button onClick={fetchData}>Fetch Data</button>
-      <button onClick={postData}>Post Data</button>
+      <input type="text" id="username" />
+      <input type="text" id="email" />
+      <button onClick={add_user}>Add User</button>
       <p>{backendMessage}</p>
     </div>
   );

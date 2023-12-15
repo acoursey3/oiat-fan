@@ -33,6 +33,7 @@ services:
       - .env
     environment:
       MYSQL_DATABASE: datababe # name of database
+      MYSQL_ROOT_PASSWORD: 
     ports:
       - "3306:3306" # default port
 
