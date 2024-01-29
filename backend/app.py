@@ -20,6 +20,12 @@ class User(db.Model):
     def __repr__(self):
         return (f'<User {self.username}>')
 
+print("we ballin")
+
+if __name__ == '__main__':
+    with app.app_context():
+        print("we SUPER ballin")
+        db.create_all()
 
 
 @app.route('/api/add_user', methods = ['POST'])
