@@ -1,0 +1,33 @@
+.rare-find {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border: solid;
+	border-width: 3px;
+	border-color: #091341;
+
+	height: 10%;
+	width: 90%;
+}
+
+.rare-find div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+}
+
+.rare-find p {
+	padding: 2%;
+}
+
+.rare-find img {
+	height: 100%;
+	width: auto;
+}
+
+.player-name {
+	width: 20%;
+}

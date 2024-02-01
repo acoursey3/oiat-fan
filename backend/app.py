@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
+import io
 
 app = Flask(__name__)
 CORS(app)
@@ -20,11 +21,13 @@ class User(db.Model):
     def __repr__(self):
         return (f'<User {self.username}>')
 
-print("we ballin")
+class Egg(db.Model):
+    __tablename__ = 'eggs'
+    name = db.Column(db.String(16), primary_key=True)
+    image = db.Column(db.LargeBinary, nullable=False)
 
 if __name__ == '__main__':
     with app.app_context():
-        print("we SUPER ballin")
         db.create_all()
 
 
@@ -45,7 +48,16 @@ def get_users():
     users = User.query.all()
     return (jsonify([{'username': user.username, 'email': user.email} for user in users]))
 
-
+@app.route('/api/get_egg_image/<name>')
+def get_egg_image(name):
+    egg = Egg.query.filter_by(name = name).first()
+    if egg and egg.image:
+        return send_file(
+            io.BytesIO(egg.image),
+            mimetype='image/png'  # Adjust the mimetype according to your image format
+        )
+    else:
+        return 'Image not found', 404
 
 
 @app.route('/api/hello', methods=['GET', 'POST'])

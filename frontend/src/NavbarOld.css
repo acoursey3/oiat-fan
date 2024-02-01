@@ -1,0 +1,53 @@
+/* #Title-Background {
+	background-color: #333333;
+	height: 20%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: -1;
+} */
+
+.Navbar {
+	display: flex;
+	background-color: #333333;
+	height: 20%;
+	width: 100%;
+
+	align-items: center;
+
+}
+
+#Title {
+	flex: auto;
+	align-items: center;
+	font-size: 50px;
+	font-weight: bold;
+	color: #e4c53f;
+	margin: 0;
+	padding: 2%;
+	text-align: left;
+	width: fit-content;
+	
+	margin-left: 2%;
+}
+
+.Header-Button {
+	flex: initial;
+	height: fit-content;
+	width: fit-content;
+
+	align-items: center;
+	justify-content: center;
+
+	background-color: #256312;
+	color: #e4c53f;
+
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+	margin: 0;
+	padding: 1%;
+	margin-right: 2%;
+}

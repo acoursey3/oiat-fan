@@ -1,0 +1,15 @@
+.preview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	height: 80%;
+	width: 25%;
+
+	/* margin: 5%; */
+
+	border: none;
+	border-radius: 60px;
+	background-color: #ccc;
+}
