@@ -7,8 +7,16 @@
 	border-width: 3px;
 	border-color: #091341;
 
+	border-right: none;
+
 	height: 10%;
 	width: 90%;
+}
+
+.rare-find div, .rare-find img {
+	border-right-style: solid;
+	border-right-width: 3px;
+	border-right-color: #091341;
 }
 
 .rare-find div {
@@ -19,15 +27,19 @@
 	height: 100%;
 }
 
-.rare-find p {
-	padding: 2%;
-}
-
 .rare-find img {
 	height: 100%;
 	width: auto;
 }
 
 .player-name {
+	width: 40%;
+}
+
+.egg-name {
+	width: 40%;
+}
+
+.egg-rarity {
 	width: 20%;
 }

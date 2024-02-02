@@ -21,7 +21,6 @@ function Navbar() {
 			<img onClick={devLogin} src="http://localhost:5000/api/get_egg_image/Cloned Carey" alt="AchaseIIIX" />
 			<img onClick={devLogin} src="http://localhost:5000/api/get_egg_image/Cloned Raphael" alt="Balake" />
 			<div className="spacer-fixed"></div>
-			{/* <a href="/glyphcards" id="glyphcards-button">Glyphcards</a> */}
 		</nav>
 	);
 }

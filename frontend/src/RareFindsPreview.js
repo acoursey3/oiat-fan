@@ -21,16 +21,20 @@ function RareFindsPreview() {
 			<h1>{ title }</h1>
 			{rareFinds.map((rareFind) => (
 				<div className="rare-find" key={rareFind.id}>
-
-					<div className="player-name"></div>
-					<div className="egg-name"></div>
-					<div className="egg-rarity"></div>
-
-
+						<div className="player-name">
+							<p>{rareFind.player_name}</p>
+						</div>
+						<img src={rareFind.egg_image} alt={rareFind.egg_name} />
+						<div className="egg-name">
+							<p>{rareFind.egg_name}</p>
+						</div>
+						<div className="egg-rarity">
+							<p>{rareFind.egg_rarity}</p>
+						</div>
 					{/* <p className='player-name'>{rareFind.player_name}</p>
 					<p className='egg-name'>{rareFind.egg_name}</p>
 					<p className='egg-rarity'>{rareFind.egg_rarity}</p> */}
-					<img src={rareFind.egg_image} alt={rareFind.egg_name} />
+					
 				</div>
 			))}
 		</div>
