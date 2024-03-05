@@ -7,6 +7,10 @@ services:
       - "3000:3000" # default port
     depends_on:
       - mysql-db
+        #networks:
+        #- egg_network
+    volumes:
+      - ./build:/src/build
 
   # Python Flask
   backend:
@@ -17,6 +21,8 @@ services:
       - "5000:5000" # default port
     depends_on:
       - mysql-db
+        #networks:
+        #- egg_network
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
@@ -33,15 +39,21 @@ services:
     # MYSQL_ROOT_PASSWORD=[password]
     env_file:
       - .env
+    #networks:
+    #- egg_network
     environment:
       MYSQL_DATABASE: datababe # name of database
-      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: DB81Hj3VL1JUn3Ez
     ports:
       - "3306:3306" # default port
 
     # Where persistent data should be stored on the server
     volumes:
       - mysql-data:/var/lib/mysql
+
+  # networks:
+  #   egg_network:
+  #     driver: bridge
 
 # Specifies the persistent data that needs to be loaded
 # In our case, it's just the MySQL database

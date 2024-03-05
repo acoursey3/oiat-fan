@@ -11,9 +11,9 @@ function RareFindsPreview() {
 	}
 
 	const [rareFinds, setRareFinds] = useState([
-		{ id: 1, player_name: "nico371", egg_name: "Nico", egg_rarity: "10k", egg_image: "http://localhost:5000/api/get_egg_image/Nico" },
-		{ id: 2, player_name: "achaseiiix", egg_name: "Cloned Carey", egg_rarity: "1k", egg_image: "http://localhost:5000/api/get_egg_image/Cloned Carey" },
-		{ id: 3, player_name: "balake", egg_name: "Cloned Raphael", egg_rarity: "50k", egg_image: "http://localhost:5000/api/get_egg_image/Cloned Raphael" }
+		{ id: 1, player_name: "nico371", egg_name: "Nico", egg_rarity: "10k", egg_image: "www.egg.nucieda.com:5000/api/get_egg_image/Nico" },
+		{ id: 2, player_name: "achaseiiix", egg_name: "Cloned Carey", egg_rarity: "1k", egg_image: "www.egg.nucieda.com:5000/api/get_egg_image/Cloned Carey" },
+		{ id: 3, player_name: "balake", egg_name: "Cloned Raphael", egg_rarity: "50k", egg_image: "www.egg.nucieda.com:5000/api/get_egg_image/Cloned Raphael" }
 	]);
 
 	return (
