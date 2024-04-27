@@ -9,8 +9,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
       - frontend
-    networks:
-      - oiat-net
 
   # React
   frontend:
@@ -19,8 +17,6 @@ services:
       - "3000:3000" # default port
     depends_on:
       - mysql-db
-    networks:
-      - oiat-net
 
   # Python Flask
   backend:
@@ -34,8 +30,6 @@ services:
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
-    networks:
-      - oiat-net
 
   # MySQL Database
   mysql-db:
@@ -58,14 +52,8 @@ services:
     # Where persistent data should be stored on the server
     volumes:
       - mysql-data:/var/lib/mysql
-    networks:
-      - oiat-net
 
 # Specifies the persistent data that needs to be loaded
 # In our case, it's just the MySQL database
 volumes:
   mysql-data:
-
-networks:
-  oiat-net:
-    driver: bridge
