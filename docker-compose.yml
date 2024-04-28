@@ -1,3 +1,4 @@
+version: '3'
 services:
   # nginx
   nginx:
@@ -7,6 +8,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
       - frontend
 
