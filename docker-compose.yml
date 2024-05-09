@@ -8,7 +8,6 @@ services:
       - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
       - frontend
 
@@ -20,7 +19,7 @@ services:
     depends_on:
       - mysql-db
     volumes:
-      - /var/www/egg/frontend/assets:/assets
+      - ./frontend/assets:/assets
 
   # Python Flask
   backend:
