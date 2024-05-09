@@ -19,6 +19,8 @@ services:
       - "3000:3000" # default port
     depends_on:
       - mysql-db
+    volumes:
+      - /var/www/egg/frontend/assets:/assets
 
   # Python Flask
   backend:
