@@ -13,6 +13,10 @@ backend/include/
 
 backend/.venv/
 
+nginx
+
+docker-compose.yml
+
 # testing
 /coverage
 
