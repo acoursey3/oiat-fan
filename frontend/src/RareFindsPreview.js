@@ -1,7 +1,18 @@
 import './Previews.css'
 import './RareFindsPreview.css'
 
-import { useState } from 'react';
+import { useState } from 'react'
+import get_egg_image from './Images.js'
+
+class RareFind {
+	constructor(id, player_name, egg_name, egg_rarity) {
+		this.id = id;
+		this.player_name = player_name;
+		this.egg_name = egg_name;
+		this.egg_rarity = egg_rarity;
+		this.egg_image = get_egg_image(egg_name);
+	}
+}
 
 function RareFindsPreview() {
 	let title = "Rare Finds";
@@ -11,10 +22,34 @@ function RareFindsPreview() {
 	}
 
 	const [rareFinds, setRareFinds] = useState([
-		{ id: 1, player_name: "nico371", egg_name: "Nico", egg_rarity: "10k", egg_image: "http://localhost:5000/api/get_egg_image/Nico" },
-		{ id: 2, player_name: "achaseiiix", egg_name: "Cloned Carey", egg_rarity: "1k", egg_image: "http://localhost:5000/api/get_egg_image/Cloned Carey" },
-		{ id: 3, player_name: "balake", egg_name: "Cloned Raphael", egg_rarity: "50k", egg_image: "http://localhost:5000/api/get_egg_image/Cloned Raphael" }
+		new RareFind(1, "nico371", "Nico", "10k"),
+		new RareFind(2, "achaseiiix", "Cloned Carey", "1k"),
+		new RareFind(3, "balake", "Cloned Raphael", "50k"),
 	]);
+
+	function changeEggImage(id) {
+		const new_egg = prompt("Egg Name: ");
+
+		const newList = rareFinds.filter((rareFind) => rareFind.id === id);
+		newList[0] = {
+			...newList[0],
+			egg_image: get_egg_image(new_egg)
+		}
+
+		editRareFind(id, newList[0])
+	}
+
+	function editRareFind(id, newRareFind) {
+		const newList = rareFinds.map((rareFind) => {
+			if (rareFind.id === id) {
+				const updatedRareFind = newRareFind;
+				return (updatedRareFind);
+			}
+			return (rareFind);
+		});
+
+		setRareFinds(newList);
+	}
 
 	return (
 		<div className="preview">
@@ -24,7 +59,9 @@ function RareFindsPreview() {
 						<div className="player-name">
 							<p>{rareFind.player_name}</p>
 						</div>
-						<img src={rareFind.egg_image} alt={rareFind.egg_name} />
+						<button onClick={() => changeEggImage(rareFind.id)}>
+						<img src={rareFind.egg_image} onError={(e) => {e.currentTarget.src = "/assets/eggs/unknown.png"; e.currentTarget.onError = null;}} alt={rareFind.egg_name} />
+						</button>
 						<div className="egg-name">
 							<p>{rareFind.egg_name}</p>
 						</div>
